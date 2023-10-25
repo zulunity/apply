@@ -1,6 +1,6 @@
 #!/bin/bash
 export MODULE=${1}
-export GITMODULE="https://nrepo.nextia.space/GiteaAdmin/$MODULE.git"
+export GITMODULE="https://git.zulu.house/zulunity/$MODULE.git"
 ## acquiring state bucket
 export BUCKET="$(aws s3api list-buckets --query 'Buckets[?starts_with(Name, `zulunity-remote-state`)].{Name:Name, CreationDate:CreationDate}' | jq -r 'sort_by(.CreationDate)|reverse|.[0].Name')"
 ## acquiring account
