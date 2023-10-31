@@ -2,6 +2,8 @@
 
 ## exporting module name
 export MODULE=${1}
+## exporting the datetime
+export DATE=$(date +%d%m%Y%H%M%S)
 ## exporting vars to tf_vars
 shift
 for ARGUMENT in "${@}"
@@ -41,6 +43,6 @@ export TF_VAR_description="AWS $MODULE"
 export TF_VAR_region="$AWS_REGION"
 tofu init \
     -backend-config="bucket=$BUCKET" \
-    -backend-config="key=state" \
+    -backend-config="key=$MODULE" \
     -backend-config="region=$AWS_REGION"
 tofu apply -auto-approve
